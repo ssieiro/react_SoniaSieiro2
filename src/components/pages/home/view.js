@@ -23,8 +23,9 @@ class Home extends React.Component {
   }
 
   _onSubmit = () => {
+    console.log('this.props', this.props);
     const {search} = this.state;
-    const {getMovies} = this.props;
+    const {getMovies, moviesList} = this.props;
 
     const errors = {};
     if (!search) {

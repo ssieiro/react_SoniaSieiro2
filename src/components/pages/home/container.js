@@ -2,18 +2,19 @@ import {connect} from 'react-redux';
 import View from './view';
 import {searchActions} from '../../../redux/search';
 
-const mapStateProps = (state) => {
+const mapStateToProps = (state) => {
+  //console.log('State', state);
   return {
-    moviesList: state.search.moviesList,
+    moviesList: state.search.list,
     loading: state.search.loading,
     search: state.search.search,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     getMovies: (search) => dispatch(searchActions.fetchMovies(search)),
   };
 };
 
-export default connect(mapStateProps, mapDispatchToProps)(View);
+export default connect(mapStateToProps, mapDispatchToProps)(View);
