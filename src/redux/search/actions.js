@@ -1,6 +1,7 @@
 import * as types from './types';
 import * as api from '../../api';
 import {Alert} from 'react-native';
+import {moviesActions} from '../../redux/movies';
 
 export function updateList(newList) {
   const action = {
@@ -34,7 +35,18 @@ export const fetchMovies = (search) => {
       const getMoviesRes = await api.getMovies(search);
       console.log(getMoviesRes);
       const list = getMoviesRes.data.Search ? getMoviesRes.data.Search : [];
+      const results = parseInt(getMoviesRes.data.totalResults, 10);
+      console.log('results', results);
+      var pages;
+      if (results % 10 === 0) {
+        pages = results / 10;
+      } else {
+        pages = parseInt((results / 10 + 1).toFixed(0));
+      }
+      dispatch(moviesActions.setNumPages(pages));
       dispatch(updateList(list));
+      // state = getState();
+      // console.log('state', state);
     } catch (e) {
       Alert.alert('Error', e.message || 'Ha ocurrido un error');
     } finally {

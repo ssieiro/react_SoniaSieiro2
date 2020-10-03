@@ -7,8 +7,8 @@ const instance = axios.create({
   headers: {'Content-Type': 'application/json'},
 });
 
-export const getMovies = (search) => {
-  const url = `/?apikey=${API_KEY}&s=${search}`;
+export const getMovies = (search, page = 1) => {
+  const url = `/?apikey=${API_KEY}&s=${search}&page=${page}`;
   return instance.get(url);
 };
 

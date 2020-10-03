@@ -10,12 +10,15 @@ const mapStateToProps = (state) => {
     search: state.search.search,
     loading: state.movies.loading,
     movieID: state.movies.movieID,
+    actualPage: state.movies.actualPage,
+    numPages: state.movies.numPages,
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     refreshMovies: () => dispatch(moviesActions.refreshMovies()),
+    getMoviesPage: (page) => dispatch(moviesActions.fetchMoviesByPage(page)),
     setSelectedMovie: (movieID) =>
       dispatch(moviesActions.fetchMovieDetail(movieID)),
   };

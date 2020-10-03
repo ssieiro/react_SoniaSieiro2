@@ -6,6 +6,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.main,
   },
+
+  button: {marginTop: 20, marginHorizontal: 20, textDecorationColor: 'white'},
+
+  pageButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

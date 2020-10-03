@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   render() {
-    //console.log('store', store.getState());
+    console.log('store', store.getState());
     return (
       <Provider store={store}>
         <Router>
