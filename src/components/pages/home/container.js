@@ -3,7 +3,7 @@ import View from './view';
 import {searchActions} from '../../../redux/search';
 
 const mapStateToProps = (state) => {
-  console.log('State', state);
+  //console.log('State', state);
   return {
     list: state.search.list,
     loading: state.search.loading,

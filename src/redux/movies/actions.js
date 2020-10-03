@@ -1,6 +1,7 @@
 import * as types from './types';
 import * as api from '../../api';
 import {Alert} from 'react-native';
+import {searchActions} from '../../redux/search';
 
 export function updateList(newList) {
   const action = {
@@ -24,6 +25,22 @@ export const setMovieID = (movieID) => {
     payload: {search: search},
   };
   return action;
+};
+
+export const refreshMovies = () => {
+  return async (dispatch, getState) => {
+    try {
+      state = getState();
+      dispatch(setLoading(true));
+      const getMoviesRes = await api.getMovies(state.search.search);
+      const list = getMoviesRes.data.Search ? getMoviesRes.data.Search : [];
+      dispatch(searchActions.updateList(list));
+    } catch (e) {
+      Alert.alert('Error', e.message || 'Ha ocurrido un error');
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
 };
 
 export const fetchMovieDetail = (movieID) => {

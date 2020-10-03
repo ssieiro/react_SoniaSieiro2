@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TouchableOpacity, Image, Dimensions} from 'react-native';
+import {TouchableOpacity, Image, Dimensions, Text} from 'react-native';
 import PropType from 'prop-types';
 
 class MovieCard extends Component {
@@ -15,11 +15,12 @@ class MovieCard extends Component {
     const callback = (width, height) => {
       const totalWidth = Dimensions.get('window').width;
       const cardWidth = totalWidth / 2;
-      const cardHeight = (cardWidth * height) / width;
+      //const cardHeight = (cardWidth * height) / width;
+      const cardHeight = 280;
       this.setState({height: cardHeight, width: cardWidth});
     };
 
-    // Image.getSize(this.props.movie.Poster, callback);
+    Image.getSize(this.props.movie.Poster, callback);
   }
 
   _onPressButton = () => {

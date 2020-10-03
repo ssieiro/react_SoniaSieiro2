@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {SafeAreaView, Text, FlatList, RefreshControl} from 'react-native';
+import {SafeAreaView, FlatList, RefreshControl} from 'react-native';
 import styles from './styles';
 import {MovieCard} from '../../molecules';
 //import {Actions} from 'react-native-router-flux';
@@ -19,23 +19,22 @@ class Movies extends React.Component {
     const {moviesList, loading} = this.props;
     return (
       <SafeAreaView style={styles.container}>
-        <Text>Hola</Text>
-        {/* <FlatList
+        <FlatList
           data={moviesList}
           keyExtractor={(item, index) => `card-${item.imdbID}`}
           numColumns={2}
           renderItem={this._renderItem}
           refreshControl={
             <RefreshControl
-              colors={['red']}
-              tintColor={'red'}
+              colors={['white']}
+              tintColor={'white'}
               refreshing={loading}
-              onRefresh={this.props.getMovies}
+              onRefresh={this.props.refreshMovies}
               title={'Cargando...'}
-              titleColor={'red'}
+              titleColor={'white'}
             />
           }
-        /> */}
+        />
       </SafeAreaView>
     );
   }
@@ -44,7 +43,7 @@ class Movies extends React.Component {
 Movies.propTypes = {
   moviesList: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
-  getMovies: PropTypes.func,
+  refreshMovies: PropTypes.func,
   setSelectedMovie: PropTypes.func,
 };
 

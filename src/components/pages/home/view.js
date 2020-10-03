@@ -1,13 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  SafeAreaView,
-  View,
-  TouchableOpacity,
-  Text,
-  TextInput,
-  ActionSheetIOS,
-} from 'react-native';
+import {SafeAreaView, View, TouchableOpacity} from 'react-native';
 import {Input, Button} from '../../atoms';
 import styles from './styles';
 import _ from 'lodash';
