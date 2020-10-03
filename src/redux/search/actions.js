@@ -1,7 +1,6 @@
 import * as types from './types';
 import * as api from '../../api';
 import {Alert} from 'react-native';
-import store from '../../config/redux';
 
 export function updateList(newList) {
   const action = {
@@ -36,7 +35,6 @@ export const fetchMovies = (search) => {
       console.log(getMoviesRes);
       const list = getMoviesRes.data.Search ? getMoviesRes.data.Search : [];
       dispatch(updateList(list));
-      console.log('store', store.getState());
     } catch (e) {
       Alert.alert('Error', e.message || 'Ha ocurrido un error');
     } finally {

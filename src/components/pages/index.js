@@ -1,2 +1,3 @@
 import Home from './home';
-export {Home};
+import Movies from './movies';
+export {Home, Movies};
