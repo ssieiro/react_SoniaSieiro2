@@ -84,8 +84,8 @@ export function fetchMovieDetail(movie) {
       dispatch(setSelectedMovie(movie));
       const getMovieDetailRes = await api.getMovieDetail(movie.imdbID);
       const movieDetail = getMovieDetailRes.data;
-      console.log(movieDetail);
       dispatch(detailActions.setMovieDetail(movieDetail));
+      console.log(movieDetail);
     } catch (e) {
       Alert.alert('Error', e.message || 'Ha ocurrido un error');
     } finally {

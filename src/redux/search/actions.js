@@ -33,10 +33,8 @@ export const fetchMovies = (search) => {
       dispatch(setLoading(true));
       dispatch(setSearch(search));
       const getMoviesRes = await api.getMovies(search);
-      //console.log(getMoviesRes);
       const list = getMoviesRes.data.Search ? getMoviesRes.data.Search : [];
       const results = parseInt(getMoviesRes.data.totalResults, 10);
-      //console.log('results', results);
       var pages;
       if (results % 10 === 0) {
         pages = results / 10;
@@ -45,8 +43,6 @@ export const fetchMovies = (search) => {
       }
       dispatch(moviesActions.setNumPages(pages));
       dispatch(updateList(list));
-      // state = getState();
-      // console.log('state', state);
     } catch (e) {
       Alert.alert('Error', e.message || 'Ha ocurrido un error');
     } finally {
