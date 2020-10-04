@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     refreshMovies: () => dispatch(moviesActions.refreshMovies()),
     getMoviesPage: (page) => dispatch(moviesActions.fetchMoviesByPage(page)),
-    setSelectedMovie: (movieID) =>
-      dispatch(moviesActions.fetchMovieDetail(movieID)),
+    setSelectedMovie: (movie) =>
+      dispatch(moviesActions.fetchMovieDetail(movie)),
   };
 };
 

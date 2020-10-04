@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import {SafeAreaView, FlatList, RefreshControl, Button} from 'react-native';
 import styles from './styles';
 import {MovieCard, PageButton} from '../../molecules';
-//import {Actions} from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
 
 class Movies extends React.Component {
   _onMoviePress = (movie) => {
     this.props.setSelectedMovie(movie);
-    //Actions.push('Characters', {title: house.nombre});
+    Actions.push('Detail', {title: movie.Title});
   };
-  //probar si lo del item.index funciona
   _renderItem = ({item}) => (
     <MovieCard movie={item} onPress={this._onMoviePress} />
   );
@@ -24,8 +23,6 @@ class Movies extends React.Component {
   }
 
   render() {
-    console.log('actualPage', this.props.actualPage);
-    console.log('numPages', this.props.numPages);
     const {moviesList, loading, actualPage} = this.props;
     return (
       <SafeAreaView style={styles.container}>

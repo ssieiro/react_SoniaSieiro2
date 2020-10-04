@@ -13,26 +13,19 @@ const PageButton = (props) => {
     getMoviesPage(page - 1);
   };
 
-  console.log('nextHide', nextHide);
-  console.log('backHide', backHide);
-
   if (nextHide && backHide) {
-    console.log('Caso 1');
     return null;
   }
 
   if (nextHide && !backHide) {
-    console.log('Caso 2');
     return <Button title="Back" onPress={this._goBack} style={styles.button} />;
   }
 
   if (!nextHide && backHide) {
-    console.log('Caso 3');
     return <Button title="Next" onPress={this._goNext} style={styles.button} />;
   }
 
   if (!nextHide && !backHide) {
-    console.log('Caso 4');
     return (
       <View style={styles.pageButtonsContainer}>
         <Button title="Back" onPress={this._goBack} style={styles.button} />

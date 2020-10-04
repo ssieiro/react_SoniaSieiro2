@@ -2,6 +2,7 @@ import * as types from './types';
 import * as api from '../../api';
 import {Alert} from 'react-native';
 import {searchActions} from '../../redux/search';
+import {detailActions} from '../../redux/detail';
 
 export function updateList(newList) {
   const action = {
@@ -19,10 +20,10 @@ export const setLoading = (loading) => {
   return action;
 };
 
-export const setMovieID = (movieID) => {
+export const setSelectedMovie = (movie) => {
   const action = {
-    type: types.SET_SEARCH,
-    payload: {search: search},
+    type: types.SET_SELECTEDMOVIE,
+    payload: {movie: movie},
   };
   return action;
 };
@@ -76,15 +77,15 @@ export function fetchMoviesByPage(page) {
   };
 }
 
-export function fetchMovieDetail(movieID) {
+export function fetchMovieDetail(movie) {
   return async (dispatch, getState) => {
     try {
       dispatch(setLoading(true));
-      dispatch(setMovieId(movieId));
-      const getMovieDetailRes = await api.getMovieDetail(movieID);
-      console.log(getMovieDetailRes);
-      //const list = getMoviesRes.data.Search ? getMoviesRes.data.Search : [];
-      //dispatch(updateList(list));
+      dispatch(setSelectedMovie(movie));
+      const getMovieDetailRes = await api.getMovieDetail(movie.imdbID);
+      const movieDetail = getMovieDetailRes.data;
+      console.log(movieDetail);
+      dispatch(detailActions.setMovieDetail(movieDetail));
     } catch (e) {
       Alert.alert('Error', e.message || 'Ha ocurrido un error');
     } finally {

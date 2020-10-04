@@ -16,7 +16,7 @@ class Home extends React.Component {
   }
 
   _onSubmit = () => {
-    console.log('this.props', this.props);
+    //console.log('this.props', this.props);
     const {search} = this.state;
     const {getMovies} = this.props;
 

@@ -33,10 +33,10 @@ export const fetchMovies = (search) => {
       dispatch(setLoading(true));
       dispatch(setSearch(search));
       const getMoviesRes = await api.getMovies(search);
-      console.log(getMoviesRes);
+      //console.log(getMoviesRes);
       const list = getMoviesRes.data.Search ? getMoviesRes.data.Search : [];
       const results = parseInt(getMoviesRes.data.totalResults, 10);
-      console.log('results', results);
+      //console.log('results', results);
       var pages;
       if (results % 10 === 0) {
         pages = results / 10;
