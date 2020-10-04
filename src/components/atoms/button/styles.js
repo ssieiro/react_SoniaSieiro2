@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   label: {
-    color: colors.white,
+    color: colors.black,
     fontSize: 16,
     fontWeight: '500',
   },

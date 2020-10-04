@@ -29,7 +29,7 @@ class Movies extends React.Component {
         <FlatList
           data={moviesList}
           keyExtractor={(item, index) => `card-${item.imdbID}`}
-          numColumns={2}
+          numColumns={1}
           renderItem={this._renderItem}
           refreshControl={
             <RefreshControl

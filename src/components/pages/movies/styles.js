@@ -7,11 +7,23 @@ const styles = StyleSheet.create({
     backgroundColor: colors.main,
   },
 
-  button: {marginTop: 20, marginHorizontal: 20, textDecorationColor: 'white'},
+  button: {marginTop: 20, marginHorizontal: 20, backgroundColor: 'white'},
 
   pageButtonsContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  titleText: {
+    textAlign: 'center',
+    marginHorizontal: 10,
+    color: 'black',
+    fontSize: 16,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+
+  cardView: {
+    alignItems: 'center',
   },
 });
 

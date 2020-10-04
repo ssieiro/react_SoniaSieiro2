@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.main,
   },
+  image: {
+    width: '100%',
+    height: '70%',
+  },
   titleText: {
     textAlign: 'center',
     fontSize: 24,
@@ -16,6 +20,7 @@ const styles = StyleSheet.create({
   plotText: {
     textAlign: 'center',
     fontSize: 18,
+    marginHorizontal: 20,
   },
 });
 

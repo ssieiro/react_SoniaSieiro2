@@ -40,7 +40,7 @@ class Home extends React.Component {
       <SafeAreaView style={styles.container}>
         <TouchableOpacity>
           <Input
-            label={'Search'}
+            label={'Encuentra tu película'}
             value={search}
             onChangeText={(v) => this.setState({search: v})}
             placeholder={'Introduce el nombre de una película'}

@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {},
   label: {
     marginLeft: 10,
-    color: colors.white,
+    color: colors.light_grey,
     marginBottom: 10,
     fontSize: 14,
     fontWeight: '500',

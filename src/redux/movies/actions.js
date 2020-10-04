@@ -3,6 +3,7 @@ import * as api from '../../api';
 import {Alert} from 'react-native';
 import {searchActions} from '../../redux/search';
 import {detailActions} from '../../redux/detail';
+import {Actions} from 'react-native-router-flux';
 
 export function updateList(newList) {
   const action = {
@@ -93,3 +94,31 @@ export function fetchMovieDetail(movie) {
     }
   };
 }
+
+export const addMovie = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      state = getState();
+      dispatch(setLoading(true));
+      console.log('databefore', data);
+      var addedData = {
+        Poster: 'null',
+        imdbID: 'tt1436480',
+        Year: '2012',
+        Type: 'movie',
+      };
+      var newData = Object.assign(data, addedData);
+      var arrayData = [newData];
+      list = state.search.list;
+      Array.prototype.push.apply(list, arrayData);
+      console.log('listbefore', list);
+      console.log('state', state);
+      dispatch(searchActions.updateList(list));
+      Actions.pop();
+    } catch (e) {
+      Alert.alert('Error', e.message || 'Ha ocurrido un error');
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+};

@@ -11,13 +11,11 @@ class MovieDetail extends Component {
       : require('../../../assets/images/placeholder.png');
     return (
       <View>
-        <Image
-          resizeMode={'cover'}
-          source={image}
-          style={{width: '100%', height: '80%'}}
-        />
+        <Image resizeMode={'cover'} source={image} style={styles.image} />
         <Text style={styles.titleText}>{movieDetail.Title}</Text>
-        <Text style={styles.plotText}>{movieDetail.Plot}</Text>
+        <Text style={styles.plotText} numberOfLines={4} ellipsizeMode={'tail'}>
+          {movieDetail.Plot}
+        </Text>
       </View>
     );
   }
