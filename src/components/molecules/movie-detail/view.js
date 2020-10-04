@@ -1,39 +1,23 @@
 import React, {Component} from 'react';
 import {View, Image, Dimensions, Text} from 'react-native';
 import PropType from 'prop-types';
+import styles from '../../pages/detail/styles';
 
 class MovieDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      width: 0,
-      height: 0,
-    };
-  }
-
-  async componentDidMount() {
-    const callback = (width, height) => {
-      const totalWidth = Dimensions.get('window').width;
-      const imageWidth = totalWidth;
-      const totalHeight = Dimensions.get('window').height;
-      const imageHeight = totalHeight / 2;
-      this.setState({height: imageHeight, width: imageWidth});
-    };
-    Image.getSize(this.props.movieDetail.Poster, callback);
-  }
-
   render() {
     const {movieDetail} = this.props;
-    const {height, width, poster} = this.state;
+    const image = movieDetail.Poster
+      ? {uri: movieDetail.Poster}
+      : require('../../../assets/images/placeholder.png');
     return (
       <View>
         <Image
           resizeMode={'cover'}
-          source={{uri: movieDetail.Poster}}
-          style={{width: width, height: height}}
+          source={image}
+          style={{width: '100%', height: '80%'}}
         />
-        <Text>{movieDetail.Title}</Text>
-        <Text>{movieDetail.Plot}</Text>
+        <Text style={styles.titleText}>{movieDetail.Title}</Text>
+        <Text style={styles.plotText}>{movieDetail.Plot}</Text>
       </View>
     );
   }
