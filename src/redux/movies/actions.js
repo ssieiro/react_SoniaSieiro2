@@ -100,19 +100,25 @@ export const addMovie = (data) => {
     try {
       state = getState();
       dispatch(setLoading(true));
-      console.log('databefore', data);
-      var addedData = {
-        Poster: 'null',
-        imdbID: 'tt1436480',
-        Year: '2012',
-        Type: 'movie',
-      };
+      if (!data.Poster) {
+        var addedData = {
+          Poster: 'null',
+          imdbID: 'tt1436480',
+          Year: '2012',
+          Type: 'movie',
+        };
+      } else {
+        var addedData = {
+          imdbID: 'tt1436480',
+          Year: '2012',
+          Type: 'movie',
+        };
+      }
+
       var newData = Object.assign(data, addedData);
       var arrayData = [newData];
       list = state.search.list;
       Array.prototype.push.apply(list, arrayData);
-      console.log('listbefore', list);
-      console.log('state', state);
       dispatch(searchActions.updateList(list));
       Actions.pop();
     } catch (e) {
